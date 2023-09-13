@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Code
@@ -21,7 +21,7 @@ jobs:
 
       - name: Install Chrome
         run: |
-          choco install googlechrome -y
+          apt install install googlechrome -y
           choco install chromedriver -y
 
       - name: Build with Maven
