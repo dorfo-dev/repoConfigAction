@@ -30,19 +30,20 @@ jobs:
         run: |
           mvn clean test -Dgithub.token=$GH_TOKEN
 
-      - name: Generate Allure Report
-        run: mvn allure:report
+      # - name: Generate Allure Report
+      #   run: mvn allure:report
 
-      - name: Publish Allure Results
-        uses: allure-actions/upload@v2
-        with:
-          resultsDirectory: allure-results
+        
+      # - name: Publish Allure Results
+      #   uses: allure-actions/upload@v2
+      #   with:
+      #     resultsDirectory: allure-results
 
-      - name: Upload Artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: allure-report
-          path: target/site/allure-maven-plugin
+      # - name: Upload Artifacts
+      #   uses: actions/upload-artifact@v2
+      #   with:
+      #     name: allure-report
+      #     path: target/site/allure-maven-plugin
 
       - name: Cleanup
         run: mvn clean
