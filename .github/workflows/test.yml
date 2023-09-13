@@ -21,8 +21,8 @@ jobs:
 
       - name: Install Chrome
         run: |
-          apt install install googlechrome -y
-          choco install chromedriver -y
+          apt install googlechrome -y
+          apt install chromedriver -y
 
       - name: Build with Maven
         env:
