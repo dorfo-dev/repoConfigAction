@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Code
@@ -21,8 +21,8 @@ jobs:
 
       - name: Install Chrome
         run: |
-          choco install googlechrome -y
-          choco install chromedriver -y
+          apt install googlechrome -y
+          apt install chromedriver -y
 
       - name: Build with Maven
         env:
@@ -30,19 +30,20 @@ jobs:
         run: |
           mvn clean test -Dgithub.token=$GH_TOKEN
 
-      - name: Generate Allure Report
-        run: mvn allure:report
+      # - name: Generate Allure Report
+      #   run: mvn allure:report
 
-      - name: Publish Allure Results
-        uses: allure-actions/upload@v2
-        with:
-          resultsDirectory: allure-results
+        
+      # - name: Publish Allure Results
+      #   uses: allure-actions/upload@v2
+      #   with:
+      #     resultsDirectory: allure-results
 
-      - name: Upload Artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: allure-report
-          path: target/site/allure-maven-plugin
+      # - name: Upload Artifacts
+      #   uses: actions/upload-artifact@v2
+      #   with:
+      #     name: allure-report
+      #     path: target/site/allure-maven-plugin
 
       - name: Cleanup
         run: mvn clean
