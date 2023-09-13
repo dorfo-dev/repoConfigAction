@@ -19,11 +19,16 @@ jobs:
         with:
           java-version: '11'
           distribution: 'adopt'
+      
+      - uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: beta
+        id: setup-chrome
+      - run: |
+          echo Installed chromium version: ${{ steps.setup-chrome.outputs.chrome-version }}
+          ${{ steps.setup-chrome.outputs.chrome-path }} --version
 
-      - name: Install Chrome
-        run: |
-          apt install googlechrome -y
-          apt install chromedriver -y
+      - run: chrome --version
 
       - name: Build with Maven
         env:
